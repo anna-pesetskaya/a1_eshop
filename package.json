@@ -1,0 +1,20 @@
+{
+  "name": "a1_eshop",
+  "version": "1.0.0",
+  "node": "modules",
+  "description": "tests for a1.by eshop",
+  "main": "playwright.config.js",
+  "directories": {
+    "test": "npx playwright test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.47.1",
+    "@types/node": "^22.5.5"
+  }
+}
