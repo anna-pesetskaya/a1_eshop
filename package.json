@@ -7,14 +7,12 @@
   "directories": {
     "test": "npx playwright test"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.47.1",
+    "@playwright/test": "^1.47.2",
     "@types/node": "^22.5.5"
   }
 }

@@ -5,7 +5,7 @@ const url = {
     phonesUrl: "https://www.a1.by/ru/shop/c/phones",
 };    
 
-const texts = {
+const testData = {
     smartphones: 'Смартфоны',
     support: 'поддержка',
     subscriptionEmail: "testbscs@testbscs.com",
@@ -15,7 +15,6 @@ const texts = {
     validSearchValue: 'Драйв Актив',
     invalidSearchValue: "oirutoqiu",
     phoneSearch: "Xiaomi",
-
 };
 
 const authData = {
@@ -24,7 +23,7 @@ const authData = {
     invalidPassword: "22222222Qq",
 }
 
-const wordsForSearch = {
+const phoneModelsLanguageVariants = {
     "эппл": "Apple",
     "самсунг": "Samsung",
     "ксяоми": "Xiaomi",
@@ -33,11 +32,20 @@ const wordsForSearch = {
     "хуавэй": "Huawei"
   };
 
+const links = [
+    { name: 'Тарифы и услуги', selector: '//a[@href="/ru/tarify-uslugi"]', href: '/ru/tarify-uslugi'}, 
+    { name: 'Роуминг', selector: '//li[@class="header-main-item"]//a[@href="https://roaming.a1.by/b2c"]', href: 'https://roaming.a1.by/b2c'},
+    { name: 'Интернет-магазин', selector: '//a[@href="/ru/c/shop"]', href: '/ru/c/shop'},
+    { name: 'Финансовые сервисы', selector: '//ul[@class="header-main-list cd-dropdown-content dropdown-menu"]//div[@class="yCmsComponent"]/li[5]/a[@href="/ru/services/c/Fin_uslugi"]', href: '/ru/services/c/Fin_uslugi'},
+    { name: 'Онлайн-кинотеатр VOKA', selector: '//a[@href="https://internet.a1.by/minsk/iptv"]', href: 'https://internet.a1.by/minsk/iptv'},
+    ];
+
 
 
 module.exports = {
     url,
-    texts,
+    texts: testData,
     authData,
-    wordsForSearch,
+    phoneModelsLanguageVariants,
+    links
 };

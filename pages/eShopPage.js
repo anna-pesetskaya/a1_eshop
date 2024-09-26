@@ -1,17 +1,20 @@
 const { Base } = require('./basePage');
 
+const {getRandomInt} = require('../helpers/utils.js');
+
+
 
 class EShopPage extends Base {
   constructor(page) {
     super(page);
   }
 
-  get checkBoxDiscount() {
+  get checkproductBoxDiscount() {
     return this.page.locator('//label[@for="i-bubbles-collapsed-1"]//span[@class="input-indicator"]');
   };
 
-  get eShopItems() {
-    return this.page.locator('//div[@class = "product-listing-box "]');
+  get eShopProductCards() {
+    return this.page.locator('//div[@class = "product-listing-productBox "]');
   };
 
   get goToPurchaseButtons() {
@@ -30,39 +33,39 @@ class EShopPage extends Base {
     return this.page.locator('//main//h1');
   }
 
-  get oneClickButton() {
+  get buyInOneClickButton() {
     return this.page.locator('//div[@id="radio-accordion_INSTALLMENT-CURRENT_CONTRACT"]//div[@class="collapse in"]//button[contains(@class, "one-click")]') 
   }
 
-  get oneClickModalWindow() {
+  get oneClickBoughtModalWindow() {
     return this.page.locator('#modal-buy') 
   }
 
-  get oneClickModalFio() {
+  get fullName() {
     return this.page.locator('//input[@id="fullName"]') 
   }
 
-  get oneClickModalPhone() {
+  get contactPhone() {
     return this.page.locator('//input[@id="contact-phone"]') 
   }
 
-  get oneClickModalEmail() {
+  get email() {
     return this.page.locator('//form[@id="modal-buy"]//input[@name="email"]') 
   }
 
-  get oneClickInstallmentCheckbox() {
+  get installmentCheckproductBox() {
     return this.page.locator('//form[@id="modal-buy"]//input[@id="instalments"]/../span[@class="input-indicator"]') 
   }
 
-  get oneClickInstallmentBuyButton() {
+  get buyButton() {
     return this.page.locator('//form[@id="modal-buy"]//button[@type="submit"]') 
   }
 
-  get offlineAvailableLink() {
+  get availabilityInShopsButton() {
     return this.page.locator('#availability-button') 
   }
 
-  get offlineAvailablePage() {
+  get availabilityInShopsPage() {
     return this.page.locator('//div[@id="view-store-list"]')
   }
 
@@ -95,7 +98,7 @@ class EShopPage extends Base {
   }
 
   get priceMaxField() {
-    return this.page.locator('//input[@id="i-range-box-to-0"]')
+    return this.page.locator('//input[@id="i-range-productBox-to-0"]')
   }
 
   get devicePrices() {
@@ -111,14 +114,14 @@ class EShopPage extends Base {
 
 
   async searchDiscountLabels() {
-    await this.checkBoxDiscount.waitFor({ state: 'visible', timeout: 7000 });
-    await this.checkBoxDiscount.click();
-    const productListingBoxes = await this.eShopItems;
-    const count = await productListingBoxes.count();
+    await this.waitElementVisible(checkproductBoxDiscount)
+    await this.checkproductBoxDiscount.click();
+    const productBoxes = await this.eShopProductCards;
+    const count = await productBoxes.count();
 
     for (let i = 0; i < count; i++) {
-        const box = productListingBoxes.nth(i);
-        const hasPromo = await box.locator(".plp-bubble-item.PROMO").count() > 0;
+        const productBox = productBoxes.nth(i);
+        const hasPromo = await productBox.locator(".plp-bubble-item.PROMO").count() > 0;
         if (hasPromo) {
             console.log(`Элемент ${i + 1} содержит ярлык скидки`);
         } else {
@@ -130,7 +133,7 @@ class EShopPage extends Base {
   async selectRandomEShopItem() {
     const count = await this.goToPurchaseButtons.count()
     if (count > 0) {
-      const randomIndex = Math.floor(Math.random() * count);
+      const randomIndex = getRandomInt(count);
       await this.goToPurchaseButtons.nth(randomIndex).click();
     } else {
         console.log('Нет доступных элементов для клика');
@@ -138,19 +141,20 @@ class EShopPage extends Base {
   }
 
   async clickAndFillOneClickWndFields(fio, phone, email) {
-    await this.priceBlock.waitFor({ state: 'visible', timeout: 7000 });
-    await this.oneClickButton.waitFor({ state: 'visible', timeout: 7000 });
-    await this.oneClickButton.click()
-    await this.oneClickModalWindow.waitFor({ state: 'visible', timeout: 7000 });
-    await this.oneClickModalFio.click()
-    await this.oneClickModalFio.fill(fio)
-    await this.oneClickModalPhone.click()
-    await this.oneClickModalPhone.fill(phone)
-    await this.oneClickModalEmail.click()
-    await this.oneClickModalEmail.fill(email)
-    await this.oneClickInstallmentCheckbox.click()
+    await this.waitElementVisible(priceBlock)
+    await this.waitElementVisible(buyInOneClickButton)
+    await this.buyInOneClickButton.click()
+    await this.waitElementVisible(priceBlock)
+    await this.waitElementVisible(oneClickBoughtModalWindow)
+    await this.fullName.click()
+    await this.fullName.fill(fio)
+    await this.contactPhone.click()
+    await this.contactPhone.fill(phone)
+    await this.email.click()
+    await this.email.fill(email)
+    await this.installmentCheckproductBox.click()
 
-    const myButton = await this.oneClickInstallmentBuyButton;
+    const myButton = await this.buyButton;
     const isDisabled = await myButton.getAttribute('disabled') !== null;
     const isVisible = await myButton.isVisible();
     if (isVisible && !isDisabled) {
@@ -161,9 +165,9 @@ class EShopPage extends Base {
   }
 
   async checkTransparency() {
-    await this.offlineAvailableLink.waitFor({ state: 'visible', timeout: 7000 })
-    await this.offlineAvailableLink.click()
-    await this.offlineAvailablePage.waitFor({ state: 'visible', timeout: 15000 })
+    await this.waitElementVisible(availabilityInShopsButton)
+    await this.availabilityInShopsButton.click()
+    await this.waitElementVisible(availabilityInShopsPage)
     await this.page.waitForLoadState('domcontentloaded');
     const transparencyState = await this.page.$eval('#view-store-list', el => window.getComputedStyle(el).zIndex);
     console.log(transparencyState)
@@ -173,18 +177,17 @@ class EShopPage extends Base {
   }
 
   async checkShopsFiltering() {
-    await this.offlineAvailableLink.waitFor({ state: 'visible', timeout: 7000 });
-    await this.offlineAvailableLink.click();
-    await this.offlineAvailablePage.waitFor({ state: 'visible', timeout: 15000 });
+    await this.waitElementVisible(availabilityInShopsButton)
+    await this.availabilityInShopsButton.click();
+    await this.waitElementVisible(availabilityInShopsPage)
     await this.page.waitForLoadState('domcontentloaded');
-    
     await this.shopListField.click();
 
-    const count = await this.shopOptions.count();
+    const shopsCount = await this.shopOptions.count();
     let address; 
 
-    if (count > 0) {
-        const randomIndex = Math.floor(Math.random() * count);
+    if (shopsCount > 0) {
+        const randomIndex = getRandomInt(shopsCount);
         address = await this.shopOptions.nth(randomIndex).locator('.value').textContent();
         const valueLocator = this.shopOptions.nth(randomIndex).locator('.value');
         await this.page.evaluate(el => el.click(), await valueLocator.elementHandle());
@@ -194,11 +197,11 @@ class EShopPage extends Base {
     }
     
     if (address) {
-      const shopAddresses = this.shopAdress;
-      const addressesTextArray = await shopAddresses.allTextContents(); 
-      for (let shopaddress of addressesTextArray) {
-        if (shopaddress.includes(address)) {
-          console.log(`Слово ${address} найдено в адресе: ${addressesTextArray}`);
+      const shopTownName = this.shopAdress;
+      const fullShopAdresses = await shopTownName.allTextContents(); 
+      for (let shopTownName of fullShopAdresses) {
+        if (shopTownName.includes(address)) {
+          console.log(`Слово ${address} найдено в адресе: ${fullShopAdresses}`);
         }
       }
 
@@ -208,18 +211,19 @@ class EShopPage extends Base {
   } 
 
   async selectShowOnTheMap() {
-    await this.offlineAvailableLink.waitFor({ state: 'visible', timeout: 7000 })
-    await this.offlineAvailableLink.click()
-    await this.offlineAvailablePage.waitFor({ state: 'visible', timeout: 15000 })
+    await this.waitElementVisible(availabilityInShopsButton)
+    await this.availabilityInShopsButton.click()
+    await this.waitElementVisible(availabilityInShopsPage)
     await this.page.waitForLoadState('domcontentloaded');
     await this.shopsOnTheMapLink.click()
   }
 
   async addDeviceToCart() {
-    await this.forAllOption.waitFor({ state: 'visible', timeout: 15000 })
+    await this.forAllOption(availabilityInShopsButton)
     await this.forAllOption.click()
     const promoPriceFromDeviceCard = await this.promoPriceFromDeviceCard.innerText();
-    const numericPriceWithoutRubFromDeviceCard = parseFloat(promoPriceFromDeviceCard.replace(/[^\d.]/g, ''));
+    const numericPriceWithoutRubFromDeviceCard = makeParseFloat(promoPriceFromDeviceCard);
+    //const numericPriceWithoutRubFromDeviceCard = parseFloat(promoPriceFromDeviceCard.replace(/[^\d.]/g, ''));
     const deviceNameFromDeviceCard= await this.searchResultHeader.innerText()
     await this.buyFullPriceButton.click()
     return [numericPriceWithoutRubFromDeviceCard, deviceNameFromDeviceCard];
@@ -227,17 +231,17 @@ class EShopPage extends Base {
   }
 
   async checkMaxPriceFilter(price) {
-    await this.priceMaxField.waitFor({ state: 'visible', timeout: 15000 });
+    await this.waitElementVisible(priceMaxField)
     await this.priceMaxField.click();
     await this.priceMaxField.fill(price);
     await this.priceMaxField.press('Enter');
-    await this.maxPriceFilterIcon.waitFor({ state: 'visible', timeout: 7000 });
-    
+    await this.waitElementVisible(maxPriceFilterIcon)    
     const count = await this.devicePrices.count();
 
     for (let i = 0; i < count; i++) {
         const devicePriceText = await this.devicePrices.nth(i).textContent();
-        const devicePrice = parseFloat(devicePriceText.replace(',', '.').replace(/[^\d.]/g, ''));
+        const devicePrice = makeParseFloat(devicePriceText);
+        //const devicePrice = parseFloat(devicePriceText.replace(',', '.').replace(/[^\d.]/g, ''));
         if (devicePrice < Number(price)) {
           console.log(`Цена ${devicePrice} верная и меньше 300.`);
       } else {

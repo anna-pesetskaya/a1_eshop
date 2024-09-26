@@ -2,8 +2,9 @@ const {test, expect} = require('@playwright/test');
 const MainPage = require('../pages/mainPage')
 const SearchResultsPage = require('../pages/searchResultsPage')
 const {getRandomKeyFromDictionary} = require('../helpers/utils.js');
-const { url, texts, wordsForSearch } = require('../helpers/constants.js');
+const { url, testData, phoneModelsLanguageVariants, links } = require('../helpers/constants.js');
 const {prepareForEShopTest} = require('../helpers/helpers.js');
+
 
 
 
@@ -19,21 +20,21 @@ test.describe('A1.by search test', async function () {
     })
   
     test('should be valid search results', async ({page}) => {
-        await mainPage.search(texts.validSearchValue);
+        await mainPage.clickAndSearch(testData.validSearchValue);
         await mainPage.waitAndClickFirstResult();
-        await expect (searchResultsPage.searchResultField).toHaveText(texts.validSearchValue);
+        await expect (searchResultsPage.searchResultField).toHaveText(testData.validSearchValue);
     })
 
     test('should be error message when invalid data is passed into search field', async ({page}) => {
-        await mainPage.search(texts.invalidSearchValue);
-        await expect(mainPage.failedSearchResults).toHaveText(`По запросу "${texts.invalidSearchValue}" ничего не найдено.`);
+        await mainPage.clickAndSearch(testData.invalidSearchValue);
+        await expect(mainPage.failedSearchResults).toHaveText(`По запросу "${testData.invalidSearchValue}" ничего не найдено.`);
     })
     
 
     test('should be correct search results if popular phones models names are taken in Russian', async ({page}) => {
-      const randomKey = getRandomKeyFromDictionary(wordsForSearch);
-      const randomValue = wordsForSearch[randomKey];
-      
+      const randomKey = getRandomKeyFromDictionary(phoneModelsLanguageVariants);
+      const randomValue = phoneModelsLanguageVariants[randomKey];
+     
       await mainPage.search(randomKey);
       await searchResultsPage.waitElementVisible(searchResultsPage.searchResultHeader);
       await expect (searchResultsPage.searchResultHeader).toHaveText(`Результаты поиска для «${randomKey}»`)
@@ -65,12 +66,12 @@ test.describe('A1.by search test', async function () {
     })
 
     test('should suggested results be clickable in the search results list', async ({page}) => {
-        await mainPage.search(texts.phoneSearch);
+        await mainPage.search(testData.phoneSearch);
         await searchResultsPage.checkLinkFromSearchResults;
     })
 
     test('should open correct pages when main links are pressed on the main page', async ({page}) => {
-        await mainPage.checkLinksFromMainPage();
+        await mainPage.checkLinksFromMainPage(links);
     })
 
 

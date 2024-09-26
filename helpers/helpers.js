@@ -1,17 +1,5 @@
-//const MainPage = require('../pages/mainPage')
-// const SearchResultsPage = require('../pages/searchResultsPage')
-// const EShopPage = require('../pages/eShopPage.js')
-// const CartPage = require('../pages/cartPage.js')
+const {expect} = require('@playwright/test');
 
-// let mainPage;
-// let searchResultsPage;
-// let eShopPage;
-// let cartPage;
-
-// mainPage = new MainPage(page)
-// searchResultsPage = new SearchResultsPage(page)
-// eShopPage = new EShopPage(page)
-// cartPage = new CartPage(page)
 
 async function prepareForEShopTest(mainPage, searchResultsPage) {
     await mainPage.openEShop();
@@ -27,7 +15,7 @@ async function prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage)
 }
 
 
-async function devicePricesComparison(numericPriceWithoutRubFromDeviceCard, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, deviceNameFromDeviceCard, deviceNamesTexts)  {
+async function devicePricesComparison(numericPriceWithoutRubFromDeviceCard, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, promoPriceTexts)  {
     if ((numericPriceWithoutRubFromDeviceCard) !== totalSum ||
         (numericPriceWithoutRubFromDeviceCard) !== numericTotalPriceFromCartWithoutRub ||
         (numericPriceWithoutRubFromDeviceCard) !== numericSubTotalPriceFromCartWithoutRub) {
@@ -109,4 +97,4 @@ module.exports = { prepareForEShopTest,
     devicesPricesComparison, 
     devicesNamesComparison, 
     getInnerTexts, 
-    getNumericPrices },
+    getNumericPrices }

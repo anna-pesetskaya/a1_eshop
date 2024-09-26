@@ -1,7 +1,6 @@
 const { Base } = require('./basePage');
 const { getInnerTexts, getNumericPrices } = require('../helpers/helpers.js');
-const {parseFloating} = require('../helpers/utils.js');
-
+const {makeParseFloat} = require('../helpers/utils.js');
 
 class CartPage extends Base {
   constructor(page) {
@@ -10,8 +9,6 @@ class CartPage extends Base {
   get searchResultHeader() {
     return this.page.locator('//main//h1');
   }
-
-  
 
   get deviceNameFromCart() {
     return this.page.locator('//div[@class="review-item-main-card review-item-main-unrooted-card"]//span[@class = "link-label"]')
@@ -61,55 +58,31 @@ class CartPage extends Base {
     await this.page.waitForLoadState('domcontentloaded');
     const currentHeader = await this.searchResultHeader.innerText();
     if (currentHeader !== `${headerName}`) {
-      throw new Error(`Ожидалась страница ${headerName}", но заголовок страницы: ${currentHeader}`);
+      throw new Error(`Ожидалась страница c заголовком ${headerName}", но получили заголовок страницы: ${currentHeader}`);
     }
 
     const deviceNamesTexts = await getInnerTexts(this.deviceNameFromCart);
     const promoPriceTexts = await getNumericPrices(this.devicePriceFromCart);
 
     const totalPriceFromCart = await this.totalPriceFromCart.innerText();
-    const numericTotalPriceFromCartWithoutRub = parseFloating(totalPriceFromCart)
+    //const numericTotalPriceFromCartWithoutRub = parseFloat(totalPriceFromCart.replace(/[^\d.]/g, ''));
+    const numericTotalPriceFromCartWithoutRub = makeParseFloat(totalPriceFromCart);
 
     const subTotalPriceFromCart = await this.subTotalPriceFromCart.innerText();
-    const numericSubTotalPriceFromCartWithoutRub = parseFloating(subTotalPriceFromCart)
+    //const numericSubTotalPriceFromCartWithoutRub = parseFloat(subTotalPriceFromCart.replace(/[^\d.]/g, ''));
+    const numericSubTotalPriceFromCartWithoutRub = makeParseFloat(subTotalPriceFromCart);
 
     return [deviceNamesTexts, promoPriceTexts, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub]
 
-    // const deviceNamesCount= await this.deviceNameFromCart.count();
-    // const deviceNamesTexts = [];
-
-    // for (let i = 0; i < deviceNamesCount; i++) {
-    //     const innerText = await this.deviceNameFromCart.nth(i).innerText();
-    //     deviceNamesTexts.push(innerText);
-    // }
-
-    // const promoPriceFromCartCount= await this.devicePriceFromCart.count();
-    // const promoPriceTexts = [];
-    // for (let i = 0; i < promoPriceFromCartCount; i++) {
-    //   const innerText = await this.devicePriceFromCart.nth(i).innerText();
-    //   const numericPromoPriceFromCartWithoutRub = parseFloat(innerText.replace(/[^\d.]/g, ''));
-    //   promoPriceTexts.push(numericPromoPriceFromCartWithoutRub);
-    // }
-  
-
-    // const totalPriceFromCart= await this.totalPriceFromCart.innerText()
-    // const numericTotalPriceFromCartWithoutRub = parseFloat(totalPriceFromCart.replace(/[^\d.]/g, ''));
-
-    // const subTotalPriceFromCart= await this.subTotalPriceFromCart.innerText()
-    // const numericSubTotalPriceFromCartWithoutRub = parseFloat(subTotalPriceFromCart.replace(/[^\d.]/g, ''));
-
-    // return [deviceNamesTexts, promoPriceTexts, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub];
   }
 
   async removeDevicesFromCart() {
     await this.removeFromCartButton.click()
-    await this.informationWindow.waitFor({ state: 'visible', timeout: 7000 })
+    await this.waitElementVisible(informationWindow)
     await this.yesButton.click()
-    await this.confirmationMessage.waitFor({ state: 'visible', timeout: 7000 })
+    await this.waitElementVisible(confirmationMessage)
     await this.goToEShopButton.click()
-
   }
-
 
  
 }

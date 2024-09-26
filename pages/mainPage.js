@@ -1,6 +1,7 @@
 const { Base } = require('./basePage');
 const { expect } = require('@playwright/test');
 
+
 class MainPage extends Base {
   constructor(page) {
     super(page);
@@ -95,47 +96,61 @@ class MainPage extends Base {
    
 
   async acceptCoockies() {
-    await this.cookiesPanel.waitFor({ state: 'visible', timeout: 7000 });
+    const isVisible = await this.cookiesPanel.isVisible();
+    
+    if (isVisible) {
+        await this.acceptButton.click();
+    } else {
+        console.log("Cookies panel is not visible, skipping acceptance.");
+    }
     await this.acceptButton.click();
 
   };
 
   async clickToAuthorise() {
     await this.authPicture.click();
-    await this.authWay.waitFor({ state: 'visible', timeout: 10000 });
+    await this.waitElementVisible(authWay)
     await this.authWay.click();
   }
 
   async search(searchValue) {
-    await this.searchOpenBtn.waitFor({ state: 'visible', timeout: 7000 });
+    await this.waitElementVisible(searchOpenBtn)
     await this.searchOpenBtn.click();
-    await this.searchField.waitFor({ state: 'visible', timeout: 7000 }); 
+    await this.waitElementVisible(searchField)
     await this.searchField.click()
     await this.searchField.fill(searchValue)
     await this.searchField.press('Enter');
     await this.page.waitForLoadState('domcontentloaded');  
   };
 
+  async clickAndSearch(searchValue) {
+    await this.waitElementVisible(searchOpenBtn)
+    await this.searchOpenBtn.click();
+    await this.waitElementVisible(searchField)
+    await this.searchField.click()
+    await this.searchField.fill(searchValue)
+  };
+
   async waitAndClickFirstResult() {
-    await this.searchFirstResultAutosuggestion.waitFor({ state: 'visible', timeout: 10000 }); 
+    await this.waitElementVisible(searchFirstResultAutosuggestion)
     await this.searchFirstResultAutosuggestion.click();
   }
 
   async openEShop() {
     await this.eShopLink.click()
-    await this.smartphonesLink.waitFor({ state: 'visible', timeout: 7000 }); 
+    await this.waitElementVisible(smartphonesLink)
     await this.smartphonesLink.click()
   }
 
   async enterEmailForNewsSubscription(email) {
-    await this.subscriptionEmailInput.waitFor({ state: 'visible', timeout: 7000 }); 
+    await this.waitElementVisible(subscriptionEmailInput)
     await this.subscriptionEmailInput.click()
     await this.subscriptionEmailInput.fill(email);
     await this.subscriptionEmailSendButton.click()
   }
 
   async checkPopUpInfo(textToFind, textToCheck) {
-    await this.popUpWindow.waitFor({ state: 'visible', timeout: 7000 });
+    await this.waitElementVisible(popUpWindow)
     const popUpWindowExists = await this.popUpWindow.count() > 0;
     if (popUpWindowExists) {
       const firstDivLocator = this.popUpWindow.locator(".toast-content-title");
@@ -151,41 +166,41 @@ class MainPage extends Base {
     await this.confirmUnsibscribeLink.click() 
   }
 
-  async checkLinksFromMainPage() {
-    const links = [
-      { name: 'Тарифы и услуги', selector: '//a[@href="/ru/tarify-uslugi"]', href: '/ru/tarify-uslugi'}, 
-      { name: 'Роуминг', selector: '//li[@class="header-main-item"]//a[@href="https://roaming.a1.by/b2c"]', href: 'https://roaming.a1.by/b2c'},
-      { name: 'Интернет-магазин', selector: '//a[@href="/ru/c/shop"]', href: '/ru/c/shop'},
-      { name: 'Финансовые сервисы', selector: '//ul[@class="header-main-list cd-dropdown-content dropdown-menu"]//div[@class="yCmsComponent"]/li[5]/a[@href="/ru/services/c/Fin_uslugi"]', href: '/ru/services/c/Fin_uslugi'},
-      { name: 'Онлайн-кинотеатр VOKA', selector: '//a[@href="https://internet.a1.by/minsk/iptv"]', href: 'https://internet.a1.by/minsk/iptv'},
-    ];
-
+  async checkLinksFromMainPage(links) {
     for (const link of links) {
       await this.page.waitForSelector(link.selector);
-      await this.page.click(link.selector);
-      await this.page.waitForLoadState('load');
-      const currentUrl = this.page.url();
-      console.log(`Checking ${link.name}: Expected URL ${link.href}, got ${currentUrl}`);
-
+  
       if (link.name === 'Онлайн-кинотеатр VOKA') {
-        console.log(currentUrl)
-        if (currentUrl !== 'https://internet.a1.by/minsk/iptv?_gl=1*1hkj1gl*_gcl_au*MTY0MjM0NjY1Ni4xNzIyNTMwNzg5*_ga*MjExMDMzNjQ1NC4xNzIyNTMwNzg5*_ga_B1TB6FBMCH*MTcyNzE2NzE4OC4zNS4xLjE3MjcxODAzNzAuNTQuMC4xMTg3MDU1MDgz') {
-          console.error(`${link.name} opened incorrect URL: ${currentUrl}`);
+        const [newPage] = await Promise.all([
+          this.page.waitForEvent('popup'),
+          this.page.click(link.selector)
+        ]);
+  
+        await newPage.waitForLoadState('domcontentloaded');
+        const newUrl = newPage.url();
+        console.log(newUrl)
+  
+        if (newUrl !== 'https://internet.a1.by/minsk/iptv') {
+          console.error(`${link.name} opened incorrect URL: ${newUrl}`);
         }
-      } else if (link.name === 'Роуминг') {
-        if (currentUrl !== 'https://roaming.a1.by/b2c?_gl=1*vfnz9*_gcl_au*MTY0MjM0NjY1Ni4xNzIyNTMwNzg5*_ga*MjExMDMzNjQ1NC4xNzIyNTMwNzg5*_ga_B1TB6FBMCH*MTcyNzE2NzE4OC4zNS4xLjE3MjcxNzk0NjMuNjAuMC4xMTg3MDU1MDgz') {
-          console.error(`${link.name} opened incorrect URL: ${currentUrl}`);
-        } else {
-          if (currentUrl !== 'https://www.a1.by/ru' + link.href) {
+      } else {
+        await this.page.click(link.selector);
+        await this.page.waitForLoadState('load');
+  
+        const currentUrl = this.page.url(); 
+        if (link.name === 'Роуминг') {
+          if (currentUrl !== 'https://roaming.a1.by/b2c?_gl=1*1ammk1*_gcl_au*MTM2NjQ4MDU0My4xNzI3MzYzNzMw*_ga*NzIwMDczNC4xNzI3MzYzNzI5*_ga_B1TB6FBMCH*MTcyNzM2MzczMC4xLjAuMTcyNzM2MzczMC42MC4wLjExNTc0MjE4NDI.') {
             console.error(`${link.name} opened incorrect URL: ${currentUrl}`);
           }
+        } else if (currentUrl !== 'https://www.a1.by' + link.href) {
+          console.error(`${link.name} opened incorrect URL: ${currentUrl}`);
         }
       }
+  
       await this.page.goBack();
       await this.page.waitForLoadState('load');
     }
   }
-
 }
 
 module.exports = MainPage;
