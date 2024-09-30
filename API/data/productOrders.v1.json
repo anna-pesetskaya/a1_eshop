@@ -1,0 +1,205 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Generated schema for Root",
+    "type": "object",
+    "properties": {
+        "data": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "attributes": {
+                    "type": "object",
+                    "properties": {
+                        "subscriptionId": {
+                            "type": "string"
+                        },
+                        "subscriptionIdentifier": {
+                            "type": "null"
+                        },
+                        "productOfferingId": {
+                            "type": "string"
+                        },
+                        "pcFMCSelectProductOfferingId": {
+                            "type": "null"
+                        },
+                        "numberOfPaidInstallments": {
+                            "type": "null"
+                        },
+                        "productType": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "string"
+                        },
+                        "requestedCreditAmount": {
+                            "type": "null"
+                        },
+                        "msisdn": {
+                            "type": "null"
+                        },
+                        "itemNumber": {
+                            "type": "null"
+                        },
+                        "billId": {
+                            "type": "null"
+                        },
+                        "title": {
+                            "type": "null"
+                        },
+                        "message": {
+                            "type": "null"
+                        },
+                        "mode": {
+                            "type": "null"
+                        },
+                        "bundledProductOfferingId": {
+                            "type": "null"
+                        },
+                        "messageLink": {
+                            "type": "null"
+                        },
+                        "giftMSISDN": {
+                            "type": "null"
+                        },
+                        "giftAmount": {
+                            "type": "null"
+                        },
+                        "paymentAmount": {
+                            "type": "null"
+                        },
+                        "wrongNumber": {
+                            "type": "null"
+                        },
+                        "correctNumber": {
+                            "type": "null"
+                        },
+                        "wrongBillingAccount": {
+                            "type": "null"
+                        },
+                        "correctBillingAccount": {
+                            "type": "null"
+                        },
+                        "paymentDate": {
+                            "type": "null"
+                        },
+                        "callForwardingResponse": {
+                            "type": "object",
+                            "properties": {
+                                "productId": {
+                                    "type": "string"
+                                },
+                                "cfb": {
+                                    "type": "null"
+                                },
+                                "cfbNumber": {
+                                    "type": "null"
+                                },
+                                "cfnrc": {
+                                    "type": "null"
+                                },
+                                "cfnrcNumber": {
+                                    "type": "null"
+                                },
+                                "cfnry": {
+                                    "type": "string"
+                                },
+                                "cfnryNumber": {
+                                    "type": "string"
+                                },
+                                "cfnryTime": {
+                                    "type": "string"
+                                },
+                                "cfu": {
+                                    "type": "null"
+                                },
+                                "cfuNumber": {
+                                    "type": "null"
+                                },
+                                "success": {
+                                    "type": "null"
+                                }
+                            },
+                            "required": [
+                                "productId",
+                                "cfb",
+                                "cfbNumber",
+                                "cfnrc",
+                                "cfnrcNumber",
+                                "cfnry",
+                                "cfnryNumber",
+                                "cfnryTime",
+                                "cfu",
+                                "cfuNumber",
+                                "success"
+                            ]
+                        },
+                        "iccid": {
+                            "type": "null"
+                        },
+                        "kasperskyEmail": {
+                            "type": "null"
+                        }
+                    },
+                    "required": [
+                        "subscriptionId",
+                        "subscriptionIdentifier",
+                        "productOfferingId",
+                        "pcFMCSelectProductOfferingId",
+                        "numberOfPaidInstallments",
+                        "productType",
+                        "status",
+                        "requestedCreditAmount",
+                        "msisdn",
+                        "itemNumber",
+                        "billId",
+                        "title",
+                        "message",
+                        "mode",
+                        "bundledProductOfferingId",
+                        "messageLink",
+                        "giftMSISDN",
+                        "giftAmount",
+                        "paymentAmount",
+                        "wrongNumber",
+                        "correctNumber",
+                        "wrongBillingAccount",
+                        "correctBillingAccount",
+                        "paymentDate",
+                        "callForwardingResponse",
+                        "iccid",
+                        "kasperskyEmail"
+                    ]
+                }
+            },
+            "required": [
+                "type",
+                "id",
+                "attributes"
+            ]
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "requestId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "version",
+                "requestId"
+            ]
+        }
+    },
+    "required": [
+        "data",
+        "meta"
+    ]
+}

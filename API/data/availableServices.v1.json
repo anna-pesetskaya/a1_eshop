@@ -1,0 +1,1569 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "availableItems": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "productOfferings": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        }
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "iconUrls": {
+                      "type": "object",
+                      "properties": {
+                        "day": {
+                          "type": "string"
+                        },
+                        "night": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "day",
+                        "night"
+                      ]
+                    },
+                    "roaming": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "productOfferings",
+                    "name",
+                    "iconUrls",
+                    "roaming"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "productOfferings": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        }
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "iconUrls": {
+                      "type": "object",
+                      "properties": {
+                        "day": {
+                          "type": "string"
+                        },
+                        "night": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "day",
+                        "night"
+                      ]
+                    },
+                    "roaming": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "productOfferings",
+                    "name",
+                    "iconUrls",
+                    "roaming"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "productOfferings": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        }
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "iconUrls": {
+                      "type": "object",
+                      "properties": {
+                        "day": {
+                          "type": "string"
+                        },
+                        "night": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "day",
+                        "night"
+                      ]
+                    },
+                    "roaming": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "productOfferings",
+                    "name",
+                    "iconUrls",
+                    "roaming"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "productOfferings": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        }
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "iconUrls": {
+                      "type": "object",
+                      "properties": {
+                        "day": {
+                          "type": "string"
+                        },
+                        "night": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "day",
+                        "night"
+                      ]
+                    },
+                    "roaming": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "productOfferings",
+                    "name",
+                    "iconUrls",
+                    "roaming"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "productOfferings": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            },
+                            "prices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "string"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "recurringChargePeriod": {
+                                      "type": "null"
+                                    },
+                                    "unitOfMeasure": {
+                                      "type": "null"
+                                    },
+                                    "unit": {
+                                      "type": "null"
+                                    },
+                                    "promoPrice": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "value",
+                                    "recurringChargePeriod",
+                                    "unitOfMeasure",
+                                    "unit",
+                                    "promoPrice"
+                                  ]
+                                }
+                              ]
+                            },
+                            "productId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "groupType",
+                            "prices",
+                            "productId"
+                          ]
+                        }
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "iconUrls": {
+                      "type": "object",
+                      "properties": {
+                        "day": {
+                          "type": "string"
+                        },
+                        "night": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "day",
+                        "night"
+                      ]
+                    },
+                    "roaming": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "productOfferings",
+                    "name",
+                    "iconUrls",
+                    "roaming"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "availableItems"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "attributes"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "requestId"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "meta"
+  ]
+}

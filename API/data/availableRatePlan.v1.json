@@ -1,0 +1,541 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "tariffs": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "groupType": {
+                        "type": "string"
+                      },
+                      "tariffInfo": {
+                        "type": "array",
+                        "items": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "productOffering": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "groupType": {
+                                    "type": "string"
+                                  },
+                                  "prices": {
+                                    "type": "array",
+                                    "items": [
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "value": {
+                                            "type": "string"
+                                          },
+                                          "recurringChargePeriod": {
+                                            "type": "string"
+                                          },
+                                          "unitOfMeasure": {
+                                            "type": "object"
+                                          },
+                                          "unit": {
+                                            "type": "string"
+                                          },
+                                          "promoPrice": {
+                                            "type": "null"
+                                          }
+                                        },
+                                        "required": [
+                                          "type",
+                                          "value",
+                                          "recurringChargePeriod",
+                                          "unitOfMeasure",
+                                          "unit",
+                                          "promoPrice"
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "value": {
+                                            "type": "string"
+                                          },
+                                          "recurringChargePeriod": {
+                                            "type": "null"
+                                          },
+                                          "unitOfMeasure": {
+                                            "type": "object"
+                                          },
+                                          "unit": {
+                                            "type": "string"
+                                          },
+                                          "promoPrice": {
+                                            "type": "null"
+                                          }
+                                        },
+                                        "required": [
+                                          "type",
+                                          "value",
+                                          "recurringChargePeriod",
+                                          "unitOfMeasure",
+                                          "unit",
+                                          "promoPrice"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "productId": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "description",
+                                  "groupType",
+                                  "prices",
+                                  "productId"
+                                ]
+                              },
+                              "includeBlock": {
+                                "type": "array",
+                                "items": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "valueType": {
+                                        "type": "string"
+                                      },
+                                      "configurable": {
+                                        "type": "boolean"
+                                      },
+                                      "validFor": {
+                                        "type": "object",
+                                        "properties": {
+                                          "startDateTime": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "startDateTime"
+                                        ]
+                                      },
+                                      "productSpecCharacteristicValue": {
+                                        "type": "array",
+                                        "items": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "isDefault": {
+                                                "type": "boolean"
+                                              },
+                                              "unitOfMeasure": {
+                                                "type": "string"
+                                              },
+                                              "value": {
+                                                "type": "string"
+                                              },
+                                              "valueType": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "isDefault",
+                                              "unitOfMeasure",
+                                              "value",
+                                              "valueType"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "name",
+                                      "valueType",
+                                      "configurable",
+                                      "validFor",
+                                      "productSpecCharacteristicValue"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "valueType": {
+                                        "type": "string"
+                                      },
+                                      "configurable": {
+                                        "type": "boolean"
+                                      },
+                                      "validFor": {
+                                        "type": "object",
+                                        "properties": {
+                                          "startDateTime": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "startDateTime"
+                                        ]
+                                      },
+                                      "productSpecCharacteristicValue": {
+                                        "type": "array",
+                                        "items": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "isDefault": {
+                                                "type": "boolean"
+                                              },
+                                              "unitOfMeasure": {
+                                                "type": "string"
+                                              },
+                                              "value": {
+                                                "type": "string"
+                                              },
+                                              "valueType": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "isDefault",
+                                              "unitOfMeasure",
+                                              "value",
+                                              "valueType"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "name",
+                                      "valueType",
+                                      "configurable",
+                                      "validFor",
+                                      "productSpecCharacteristicValue"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "isBundle": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "productOffering",
+                              "includeBlock",
+                              "isBundle"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "productOffering": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "groupType": {
+                                    "type": "string"
+                                  },
+                                  "prices": {
+                                    "type": "array",
+                                    "items": [
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "value": {
+                                            "type": "string"
+                                          },
+                                          "recurringChargePeriod": {
+                                            "type": "string"
+                                          },
+                                          "unitOfMeasure": {
+                                            "type": "object"
+                                          },
+                                          "unit": {
+                                            "type": "string"
+                                          },
+                                          "promoPrice": {
+                                            "type": "null"
+                                          }
+                                        },
+                                        "required": [
+                                          "type",
+                                          "value",
+                                          "recurringChargePeriod",
+                                          "unitOfMeasure",
+                                          "unit",
+                                          "promoPrice"
+                                        ]
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "value": {
+                                            "type": "string"
+                                          },
+                                          "recurringChargePeriod": {
+                                            "type": "null"
+                                          },
+                                          "unitOfMeasure": {
+                                            "type": "object"
+                                          },
+                                          "unit": {
+                                            "type": "string"
+                                          },
+                                          "promoPrice": {
+                                            "type": "null"
+                                          }
+                                        },
+                                        "required": [
+                                          "type",
+                                          "value",
+                                          "recurringChargePeriod",
+                                          "unitOfMeasure",
+                                          "unit",
+                                          "promoPrice"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "productId": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "description",
+                                  "groupType",
+                                  "prices",
+                                  "productId"
+                                ]
+                              },
+                              "includeBlock": {
+                                "type": "array",
+                                "items": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "valueType": {
+                                        "type": "string"
+                                      },
+                                      "configurable": {
+                                        "type": "boolean"
+                                      },
+                                      "validFor": {
+                                        "type": "object",
+                                        "properties": {
+                                          "startDateTime": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "startDateTime"
+                                        ]
+                                      },
+                                      "productSpecCharacteristicValue": {
+                                        "type": "array",
+                                        "items": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "isDefault": {
+                                                "type": "boolean"
+                                              },
+                                              "unitOfMeasure": {
+                                                "type": "string"
+                                              },
+                                              "value": {
+                                                "type": "string"
+                                              },
+                                              "valueType": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "isDefault",
+                                              "unitOfMeasure",
+                                              "value",
+                                              "valueType"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "name",
+                                      "valueType",
+                                      "configurable",
+                                      "validFor",
+                                      "productSpecCharacteristicValue"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "valueType": {
+                                        "type": "string"
+                                      },
+                                      "configurable": {
+                                        "type": "boolean"
+                                      },
+                                      "validFor": {
+                                        "type": "object",
+                                        "properties": {
+                                          "startDateTime": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "startDateTime"
+                                        ]
+                                      },
+                                      "productSpecCharacteristicValue": {
+                                        "type": "array",
+                                        "items": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "isDefault": {
+                                                "type": "boolean"
+                                              },
+                                              "unitOfMeasure": {
+                                                "type": "string"
+                                              },
+                                              "value": {
+                                                "type": "string"
+                                              },
+                                              "valueType": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "isDefault",
+                                              "unitOfMeasure",
+                                              "value",
+                                              "valueType"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "name",
+                                      "valueType",
+                                      "configurable",
+                                      "validFor",
+                                      "productSpecCharacteristicValue"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "isBundle": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "productOffering",
+                              "includeBlock",
+                              "isBundle"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "groupType",
+                      "tariffInfo"
+                    ]
+                  }
+                ]
+              },
+              "emptyListMessage": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "tariffs",
+              "emptyListMessage"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "id",
+          "attributes"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "requestId"
+        ]
+      }
+    },
+    "required": [
+      "data",
+      "meta"
+    ]
+  }

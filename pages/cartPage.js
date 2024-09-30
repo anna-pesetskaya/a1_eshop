@@ -78,9 +78,9 @@ class CartPage extends Base {
 
   async removeDevicesFromCart() {
     await this.removeFromCartButton.click()
-    await this.waitElementVisible(informationWindow)
+    await this.waitElementVisible(this.informationWindow)
     await this.yesButton.click()
-    await this.waitElementVisible(confirmationMessage)
+    await this.waitElementVisible(this.confirmationMessage)
     await this.goToEShopButton.click()
   }
 

@@ -103,20 +103,19 @@ class MainPage extends Base {
     } else {
         console.log("Cookies panel is not visible, skipping acceptance.");
     }
-    await this.acceptButton.click();
 
   };
 
   async clickToAuthorise() {
     await this.authPicture.click();
-    await this.waitElementVisible(authWay)
+    await this.waitElementVisible(this.authWay)
     await this.authWay.click();
   }
 
   async search(searchValue) {
-    await this.waitElementVisible(searchOpenBtn)
+    await this.waitElementVisible(this.searchOpenBtn)
     await this.searchOpenBtn.click();
-    await this.waitElementVisible(searchField)
+    await this.waitElementVisible(this.searchField)
     await this.searchField.click()
     await this.searchField.fill(searchValue)
     await this.searchField.press('Enter');
@@ -124,33 +123,33 @@ class MainPage extends Base {
   };
 
   async clickAndSearch(searchValue) {
-    await this.waitElementVisible(searchOpenBtn)
+    await this.waitElementVisible(this.searchOpenBtn)
     await this.searchOpenBtn.click();
-    await this.waitElementVisible(searchField)
+    await this.waitElementVisible(this.searchField)
     await this.searchField.click()
     await this.searchField.fill(searchValue)
   };
 
   async waitAndClickFirstResult() {
-    await this.waitElementVisible(searchFirstResultAutosuggestion)
+    await this.waitElementVisible(this.searchFirstResultAutosuggestion)
     await this.searchFirstResultAutosuggestion.click();
   }
 
   async openEShop() {
     await this.eShopLink.click()
-    await this.waitElementVisible(smartphonesLink)
+    await this.waitElementVisible(this.smartphonesLink)
     await this.smartphonesLink.click()
   }
 
   async enterEmailForNewsSubscription(email) {
-    await this.waitElementVisible(subscriptionEmailInput)
+    await this.waitElementVisible(this.subscriptionEmailInput)
     await this.subscriptionEmailInput.click()
     await this.subscriptionEmailInput.fill(email);
     await this.subscriptionEmailSendButton.click()
   }
 
   async checkPopUpInfo(textToFind, textToCheck) {
-    await this.waitElementVisible(popUpWindow)
+    await this.waitElementVisible(this.popUpWindow)
     const popUpWindowExists = await this.popUpWindow.count() > 0;
     if (popUpWindowExists) {
       const firstDivLocator = this.popUpWindow.locator(".toast-content-title");

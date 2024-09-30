@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "lesson_15",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,11 @@
   "description": "",
   "dependencies": {
     "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "jest": "^29.7.0",
-    "jest-html-reporter": "^3.10.2"
+    "jsonschema": "^1.4.1"
+  },
+  "devDependencies": {
+    "jest-html-reporters": "^3.1.7"
   }
 }

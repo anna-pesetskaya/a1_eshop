@@ -1,6 +1,7 @@
 const { Base } = require('./basePage');
 
 const {getRandomInt} = require('../helpers/utils.js');
+const {makeParseFloat} = require('../helpers/utils.js');
 
 
 
@@ -98,7 +99,7 @@ class EShopPage extends Base {
   }
 
   get priceMaxField() {
-    return this.page.locator('//input[@id="i-range-productBox-to-0"]')
+    return this.page.locator('#i-range-box-to-0')
   }
 
   get devicePrices() {
@@ -114,7 +115,7 @@ class EShopPage extends Base {
 
 
   async searchDiscountLabels() {
-    await this.waitElementVisible(checkproductBoxDiscount)
+    await this.waitElementVisible(this.checkproductBoxDiscount)
     await this.checkproductBoxDiscount.click();
     const productBoxes = await this.eShopProductCards;
     const count = await productBoxes.count();
@@ -141,11 +142,11 @@ class EShopPage extends Base {
   }
 
   async clickAndFillOneClickWndFields(fio, phone, email) {
-    await this.waitElementVisible(priceBlock)
-    await this.waitElementVisible(buyInOneClickButton)
+    await this.waitElementVisible(this.priceBlock)
+    await this.waitElementVisible(this.buyInOneClickButton)
     await this.buyInOneClickButton.click()
-    await this.waitElementVisible(priceBlock)
-    await this.waitElementVisible(oneClickBoughtModalWindow)
+    await this.waitElementVisible(this.priceBlock)
+    await this.waitElementVisible(this.oneClickBoughtModalWindow)
     await this.fullName.click()
     await this.fullName.fill(fio)
     await this.contactPhone.click()
@@ -165,9 +166,9 @@ class EShopPage extends Base {
   }
 
   async checkTransparency() {
-    await this.waitElementVisible(availabilityInShopsButton)
+    await this.waitElementVisible(this.availabilityInShopsButton)
     await this.availabilityInShopsButton.click()
-    await this.waitElementVisible(availabilityInShopsPage)
+    await this.waitElementVisible(this.availabilityInShopsPage)
     await this.page.waitForLoadState('domcontentloaded');
     const transparencyState = await this.page.$eval('#view-store-list', el => window.getComputedStyle(el).zIndex);
     console.log(transparencyState)
@@ -177,9 +178,9 @@ class EShopPage extends Base {
   }
 
   async checkShopsFiltering() {
-    await this.waitElementVisible(availabilityInShopsButton)
+    await this.waitElementVisible(this.availabilityInShopsButton)
     await this.availabilityInShopsButton.click();
-    await this.waitElementVisible(availabilityInShopsPage)
+    await this.waitElementVisible(this.availabilityInShopsPage)
     await this.page.waitForLoadState('domcontentloaded');
     await this.shopListField.click();
 
@@ -211,19 +212,18 @@ class EShopPage extends Base {
   } 
 
   async selectShowOnTheMap() {
-    await this.waitElementVisible(availabilityInShopsButton)
+    await this.waitElementVisible(this.availabilityInShopsButton)
     await this.availabilityInShopsButton.click()
-    await this.waitElementVisible(availabilityInShopsPage)
+    await this.waitElementVisible(this.availabilityInShopsPage)
     await this.page.waitForLoadState('domcontentloaded');
     await this.shopsOnTheMapLink.click()
   }
 
   async addDeviceToCart() {
-    await this.forAllOption(availabilityInShopsButton)
+    await this.waitElementVisible(this.forAllOption)
     await this.forAllOption.click()
     const promoPriceFromDeviceCard = await this.promoPriceFromDeviceCard.innerText();
     const numericPriceWithoutRubFromDeviceCard = makeParseFloat(promoPriceFromDeviceCard);
-    //const numericPriceWithoutRubFromDeviceCard = parseFloat(promoPriceFromDeviceCard.replace(/[^\d.]/g, ''));
     const deviceNameFromDeviceCard= await this.searchResultHeader.innerText()
     await this.buyFullPriceButton.click()
     return [numericPriceWithoutRubFromDeviceCard, deviceNameFromDeviceCard];
@@ -231,18 +231,17 @@ class EShopPage extends Base {
   }
 
   async checkMaxPriceFilter(price) {
-    await this.waitElementVisible(priceMaxField)
+    await this.waitElementVisible(this.priceMaxField)
     await this.priceMaxField.click();
     await this.priceMaxField.fill(price);
     await this.priceMaxField.press('Enter');
-    await this.waitElementVisible(maxPriceFilterIcon)    
+    await this.waitElementVisible(this.maxPriceFilterIcon)    
     const count = await this.devicePrices.count();
 
     for (let i = 0; i < count; i++) {
         const devicePriceText = await this.devicePrices.nth(i).textContent();
         const devicePrice = makeParseFloat(devicePriceText);
-        //const devicePrice = parseFloat(devicePriceText.replace(',', '.').replace(/[^\d.]/g, ''));
-        if (devicePrice < Number(price)) {
+        if (devicePrice < makeParseFloat(price)) {
           console.log(`Цена ${devicePrice} верная и меньше 300.`);
       } else {
           throw new Error(`Цена ${devicePrice} неверная или больше 300.`);

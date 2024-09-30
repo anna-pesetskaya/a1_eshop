@@ -40,7 +40,8 @@ class LoginPage extends Base {
 
 
   async login(loginName, password) {
-    await this.authorisationHeader.waitFor({ state: 'visible', timeout: 7000 });
+    await this.waitElementVisible(this.authorisationHeader)
+    await this.waitElementVisible(this.passwordAuthorization)
     await this.passwordAuthorization.click();
     await this.phoneField.fill(loginName);
     await this.passwordField.fill(password)

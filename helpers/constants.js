@@ -44,7 +44,7 @@ const links = [
 
 module.exports = {
     url,
-    texts: testData,
+    testData,
     authData,
     phoneModelsLanguageVariants,
     links

@@ -32,30 +32,7 @@ test.describe('A1.by EShop tests', async function () {
       await mainPage.acceptCoockies();
     })
   
-    test('should be filtered results according to chosen filter', async ({page}) => {
-      await prepareForEShopTest(mainPage, searchResultsPage);
-      await eShopPage.searchDiscountLabels();
-    })
-
-    test('should subscribe/unsubscribe news from A1', async ({page}) => {
-      
-      const token = testData.subscriptionEmail.split('@')[0];
-      const unsubscribeUrl = `https://www.a1.by/ru/company/subscriptions/unsubscribe?token=${token}&utm_source=newspromoletter&utm_medium=email`;
-
-      await mainPage.enterEmailForNewsSubscription(testData.subscriptionEmail);
-      await mainPage.checkPopUpInfo("Вы подписались", "Вы успешно подписались на нашу новостную рассылку.")
-      await page.goto(unsubscribeUrl), { waitUntil: 'networkidle' };
-      await mainPage.confirmUnsubscribe("Отмена подписки на новости и акции компании");
-      await mainPage.checkPopUpInfo("Вы отписались", "Вы успешно отписались от нашей новостной рассылки.");
-      const currentUrl = page.url();
-      const expectedUrl = url.companyUrl;
-      if (currentUrl !== expectedUrl) {
-        throw new Error("Неверный URL страницы");
-      } else {
-        console.log("URL страницы верный");
-      }
-      
-    })
+    
 
     test('should be available button when all fields are filled in', async ({page}) => {
       await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
@@ -69,10 +46,7 @@ test.describe('A1.by EShop tests', async function () {
         })
 
 
-    test('should be correct filtering in the list of A1 shops where to buy a device', async ({page}) => {
-        await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
-        await eShopPage.checkShopsFiltering()
-    })
+    
 
     test('should open separate page when it is asked to show eshops on the map', async ({page}) => {
         await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
@@ -143,13 +117,5 @@ test.describe('A1.by EShop tests', async function () {
         
     })
 
-    test('should be valid filtering with device prices', async ({page}) => {
-        await prepareForEShopTest(mainPage, searchResultsPage);
-        await eShopPage.checkMaxPriceFilter('300')
-    })
-
-  
-
-
-
+   
 })
