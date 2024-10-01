@@ -3,13 +3,7 @@ const MainPage = require('../pages/mainPage.js');
 const SearchResultsPage = require('../pages/searchResultsPage.js');
 const EShopPage = require('../pages/eShopPage.js');
 const CartPage = require('../pages/cartPage.js');
-const {prepareForEShopRandomTest} = require('../helpers/helpers.js');
-const {prepareForEShopTest} = require('../helpers/helpers.js');
-const {devicePricesComparison} = require('../helpers/helpers.js');
-const {deviceNamesComparison} = require('../helpers/helpers.js');
-const {totalDevicePricesComparison} = require('../helpers/helpers.js')
-const {devicesPricesComparison} = require('../helpers/helpers.js')
-const {devicesNamesComparison} = require('../helpers/helpers.js')
+
 
 
 
@@ -33,20 +27,20 @@ test.describe('A1.by EShop tests', async function () {
     })
   
     test('should be filtered results according to chosen filter', async ({page}) => {
-      await prepareForEShopTest(mainPage, searchResultsPage);
+      await eShopPage.prepareForEShopTest(mainPage, searchResultsPage);
       await eShopPage.searchDiscountLabels();
     })
 
     
     test('should be correct filtering in the list of A1 shops where to buy a device', async ({page}) => {
-        await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
+        await eShopPage.prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
         await eShopPage.checkShopsFiltering()
     })
 
   
 
     test('should be valid filtering with device prices', async ({page}) => {
-        await prepareForEShopTest(mainPage, searchResultsPage);
+        await eShopPage.prepareForEShopTest(mainPage, searchResultsPage);
         await eShopPage.checkMaxPriceFilter('300,00')
     })
 

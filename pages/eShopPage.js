@@ -249,6 +249,70 @@ class EShopPage extends Base {
     }
 }
 
+
+
+  async prepareForEShopTest(mainPage, searchResultsPage) {
+    await mainPage.openEShop();
+    await searchResultsPage.waitElementVisible(searchResultsPage.searchResultHeader);
+    await expect(searchResultsPage.searchResultHeader).toHaveText('Смартфоны');
+  }
+
+  async prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage) {
+    await mainPage.openEShop();
+    await searchResultsPage.waitElementVisible(searchResultsPage.searchResultHeader);
+    await expect(searchResultsPage.searchResultHeader).toHaveText('Смартфоны');
+    await eShopPage.selectRandomEShopItem();
+  }
+
+
+  async devicePricesComparison(numericPriceWithoutRubFromDeviceCard, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, promoPriceTexts)  {
+    if ((numericPriceWithoutRubFromDeviceCard) !== totalSum ||
+        (numericPriceWithoutRubFromDeviceCard) !== numericTotalPriceFromCartWithoutRub ||
+        (numericPriceWithoutRubFromDeviceCard) !== numericSubTotalPriceFromCartWithoutRub) {
+        throw new Error(`Цены за оборудование отличаются от цены в карточке товара: ожидаемая ${numericPriceWithoutRubFromDeviceCard}, "Цена в таблице" ${promoPriceTexts}, "Сейчас к оплате" ${numericTotalPriceFromCartWithoutRub}, "Цена товара" ${numericSubTotalPriceFromCartWithoutRub}`);
+    } else {
+        console.log(`Общая стоимость за заказ совпадает с "Сейчас к оплате" и "Ценой товара из карточки"`);
+    }
+
+
+  }
+
+  async deviceNamesComparison(deviceNameFromDeviceCard, deviceNamesTexts)  {
+    if (deviceNamesTexts.includes(deviceNameFromDeviceCard)) {
+        console.log(`Наименование товара отличается: ожидаемая ${deviceNameFromDeviceCard}, "Название товара в корзине" ${deviceNamesTexts}`);
+    } else {
+        throw new Error('Название товара совпадает в карточке товара и в корзине');
+    }
+  }
+
+  async totalDevicePricesComparison(numericPriceWithoutRubFromDeviceCard, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, deviceNameFromDeviceCard, deviceNamesTexts, promoPriceTexts) {
+    if ((numericPriceWithoutRubFromDeviceCard * 2) !== totalSum ||
+            (numericPriceWithoutRubFromDeviceCard * 2) !== numericTotalPriceFromCartWithoutRub ||
+            (numericPriceWithoutRubFromDeviceCard * 2) !== numericSubTotalPriceFromCartWithoutRub) {
+        throw new Error(`Цены за оборудование  ${deviceNameFromDeviceCard} отличаются от цены в карточке товара: ожидаемая ${numericPriceWithoutRubFromDeviceCard * 2}, "Цена в таблице" ${promoPriceTexts}, "Сейчас к оплате" ${numericTotalPriceFromCartWithoutRub}, "Цена товара" ${numericSubTotalPriceFromCartWithoutRub}`);
+    } else {
+            console.log(`Общая стоимость за заказ ${deviceNamesTexts} совпадает с "Сейчас к оплате" и "Ценой товара из карточки"`);
+    }
+  }
+
+  async devicesPricesComparison(numericPriceWithoutRubFromDeviceCard, numericPriceWithoutRubFromDeviceCard2, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, promoPriceTexts) {
+    if ((numericPriceWithoutRubFromDeviceCard + numericPriceWithoutRubFromDeviceCard2) !== totalSum ||
+        (numericPriceWithoutRubFromDeviceCard + numericPriceWithoutRubFromDeviceCard2) !== numericTotalPriceFromCartWithoutRub ||
+        (numericPriceWithoutRubFromDeviceCard + numericPriceWithoutRubFromDeviceCard2) !== numericSubTotalPriceFromCartWithoutRub) {
+        throw new Error(`Цены за оборудование отличаются от цены в карточке товара: ожидаемая ${numericPriceWithoutRubFromDeviceCard}, "Цена в таблице" ${promoPriceTexts}, "Сейчас к оплате" ${numericTotalPriceFromCartWithoutRub}, "Цена товара" ${numericSubTotalPriceFromCartWithoutRub}`);
+    } else {
+        console.log(`Общая стоимость за заказ совпадает с "Сейчас к оплате" и "Ценой товара из карточки"`);
+    }
+  }
+
+  async devicesNamesComparison(deviceNamesTexts, deviceNameFromDeviceCard2, deviceNameFromDeviceCard) {
+    if (deviceNamesTexts.includes(deviceNameFromDeviceCard2 || deviceNameFromDeviceCard)) {
+        console.log("Элемент присутствует в списке");
+    } else {
+      throw new Error("Элемент отсутствует в списке");
+    }
+  }
+
      
 
 
