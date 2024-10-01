@@ -3,13 +3,6 @@ const MainPage = require('../pages/mainPage');
 const SearchResultsPage = require('../pages/searchResultsPage');
 const EShopPage = require('../pages/eShopPage.js');
 const CartPage = require('../pages/cartPage.js');
-const {prepareForEShopRandomTest} = require('../helpers/helpers.js');
-const {prepareForEShopTest} = require('../helpers/helpers.js');
-const {devicePricesComparison} = require('../helpers/helpers.js');
-const {deviceNamesComparison} = require('../helpers/helpers.js');
-const {totalDevicePricesComparison} = require('../helpers/helpers.js')
-const {devicesPricesComparison} = require('../helpers/helpers.js')
-const {devicesNamesComparison} = require('../helpers/helpers.js')
 
 
 
@@ -35,13 +28,13 @@ test.describe('A1.by EShop tests', async function () {
     
 
     test('should be available button when all fields are filled in', async ({page}) => {
-      await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
+      await eShopPage.prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
       await eShopPage.clickAndFillOneClickWndFields(testData.fio, testData.phoneNumber, testData.contactEmail);
     })
 
 
     test('should be nontransparent window where the list of A1 shops is shown', async ({page}) => {
-        await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
+        await eShopPage.prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
         await eShopPage.checkTransparency();
         })
 
@@ -49,7 +42,7 @@ test.describe('A1.by EShop tests', async function () {
     
 
     test('should open separate page when it is asked to show eshops on the map', async ({page}) => {
-        await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
+        await eShopPage.prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
         await eShopPage.selectShowOnTheMap()
         const currentUrl = page.url();
         const expectedUrl = url.shopsUrl;
@@ -62,17 +55,17 @@ test.describe('A1.by EShop tests', async function () {
 
   
     test('should be the same name and prices of device in the device card and cart', async ({page}) => {
-        await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
+        await eShopPage.prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
         const [numericPriceWithoutRubFromDeviceCard, deviceNameFromDeviceCard] = await eShopPage.addDeviceToCart("Корзина")
         const [deviceNamestestData, promoPricetestData, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub] = await cartPage.getDeviceDataInCart("Корзина")
         const totalSum = promoPricetestData.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        devicePricesComparison(numericPriceWithoutRubFromDeviceCard, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, promoPricetestData)
-        deviceNamesComparison(deviceNameFromDeviceCard, deviceNamestestData)
+        eShopPage.devicePricesComparison(numericPriceWithoutRubFromDeviceCard, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, promoPricetestData)
+        eShopPage.deviceNamesComparison(deviceNameFromDeviceCard, deviceNamestestData)
 
     })
 
     test('should be correct device prices in the cart if increase number of devices', async ({page}) => {
-      await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
+      await eShopPage.prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
       const [numericPriceWithoutRubFromDeviceCard, deviceNameFromDeviceCard] = await eShopPage.addDeviceToCart()
       await (cartPage.addDeviceFromCartButton).click()
       const quantityElement = await cartPage.deviceQuantity;
@@ -81,7 +74,7 @@ test.describe('A1.by EShop tests', async function () {
       const totalSum = promoPricetestData.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
       if (parseInt(value) === 2) {
-        totalDevicePricesComparison(numericPriceWithoutRubFromDeviceCard, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, deviceNameFromDeviceCard, deviceNamestestData, promoPricetestData)
+        eShopPage.totalDevicePricesComparison(numericPriceWithoutRubFromDeviceCard, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, deviceNameFromDeviceCard, deviceNamestestData, promoPricetestData)
       } else {
           throw new Error('Количество устройств не равно 2');
       }
@@ -89,7 +82,7 @@ test.describe('A1.by EShop tests', async function () {
 
 
     test('should be empty card when all devices are deleted', async ({page}) => {
-        await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
+        await eShopPage.prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
         await eShopPage.addDeviceToCart()
         await cartPage.getDeviceDataInCart("Корзина")
         await cartPage.removeDevicesFromCart()
@@ -105,15 +98,15 @@ test.describe('A1.by EShop tests', async function () {
 
 
     test('should be correct total prices when add several devices to cart', async ({page}) => {
-        await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
+        await eShopPage.prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage);
         const [numericPriceWithoutRubFromDeviceCard, deviceNameFromDeviceCard] = await eShopPage.addDeviceToCart()
         await cartPage.getDeviceDataInCart("Корзина")
-        await prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage)
+        await eShopPage.prepareForEShopRandomTest(mainPage, searchResultsPage, eShopPage)
         const [numericPriceWithoutRubFromDeviceCard2, deviceNameFromDeviceCard2] = await eShopPage.addDeviceToCart()
         const [deviceNamestestData, promoPricetestData, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub] = await cartPage.getDeviceDataInCart("Корзина")
         const totalSum = promoPricetestData.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        await devicesPricesComparison(numericPriceWithoutRubFromDeviceCard, numericPriceWithoutRubFromDeviceCard2, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, promoPricetestData)
-        await devicesNamesComparison(deviceNamestestData, deviceNameFromDeviceCard2, deviceNameFromDeviceCard)
+        await eShopPage.devicesPricesComparison(numericPriceWithoutRubFromDeviceCard, numericPriceWithoutRubFromDeviceCard2, totalSum, numericTotalPriceFromCartWithoutRub, numericSubTotalPriceFromCartWithoutRub, promoPricetestData)
+        await eShopPage.devicesNamesComparison(deviceNamestestData, deviceNameFromDeviceCard2, deviceNameFromDeviceCard)
         
     })
 
