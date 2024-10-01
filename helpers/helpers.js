@@ -1,6 +1,3 @@
-const {expect} = require('@playwright/test');
-
-
 async function getInnerTexts(elements) {
     const texts = [];
     const count = await elements.count();
